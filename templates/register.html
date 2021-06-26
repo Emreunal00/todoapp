@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}
+Register
+{% endblock title %}
+{% block body %}
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="post">
+    <dl>{{render_field(form.firstname)}}{{render_field(form.lastname)}}{{render_field(form.adres)}}</dl>
+    <p>
+        <input type="submit" value="Kayıt ol"/>
+    </p>
+</form>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Adres</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <td><p>{{user.firstname}}</p></td>
+      {%if user.lastname == ""%}
+      <td>Kullanıcı Girmemiş</td>
+      {%else%}
+      <td><p>{{user.lastname}}</p></td>
+      {%endif%}
+      {%if user.adres == None%}
+      <td>Kullanıcı Girmemiş</td>
+      {%elif user.adres == ""%}
+      <td>Kullanıcı Girmemiş</td>
+      {%else%}
+      <td><p>{{user.adres}}</p></td>
+      {%endif%}
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock body %}

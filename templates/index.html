@@ -1,0 +1,16 @@
+{% extends "layout.html" %} 
+    {% block title %}
+    <h2>İndex</h2>
+    {% endblock title %}
+    {% block body %}
+    <h2>İndex içerik</h2>
+    <p>Arka taraftan gelen sayı değeri: <strong>{{number}}</strong></p>
+    <p>Arka taraftan gelen isim: <strong>{{isim}}</strong></p>
+
+    <ul class="list-group">
+    {%for number in sayilar %}
+    <li class="list-group-item">sayı: {{number}}</li>
+    {% endfor %}
+    </ul>
+
+    {% endblock body %}
